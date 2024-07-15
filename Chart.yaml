@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Chart for kyverno deployment
+name: kyverno
+version: 1.0.0
+dependencies:
+appVersion: "1.0"
+  - name: kyverno
+    version: 3.2.6
+    repository: "https://kyverno.github.io/kyverno/"
