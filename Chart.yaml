@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v3
 description: Chart for kyverno deployment
 name: kyverno
 version: 1.0.0
