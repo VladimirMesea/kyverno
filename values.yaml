@@ -1,45 +1,60 @@
-# Default values for helm-guestbook.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+namespace-config:
+  application:
+    serviceAccount:
+      create: false
+    namespace:
+      name: kyverno
+      pss:
+        level: restricted
 
-replicaCount: 1
-
-image:
-  repository: gcr.io/heptio-images/ks-guestbook-demo
-  tag: 0.1
-  pullPolicy: IfNotPresent
-
-service:
-  type: ClusterIP
-  port: 80
-
-ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  path: /
-  hosts:
-    - chart-example.local
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #  cpu: 100m
-  #  memory: 128Mi
-  # requests:
-  #  cpu: 100m
-  #  memory: 128Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+kyverno:
+  namespace: kyverno
+  priorityClassName: "system-cluster-critical"
+  rbac:
+    create: true
+    serviceAccount:
+      create: false
+  resources:
+    limits:
+      memory: 1Gi
+  admissionController:
+    replicas: 1
+    container:
+      resources:
+        limits: 
+          memory: 768Mi
+  backgroundController:
+    replicas: 1
+  cleanupController:
+    replicas: 1
+  reportsController:
+    replicas: 1
+    resources:
+      limits:
+        memory: 256Mi
+  podDisruptionBudget:
+    minAvailable: 1
+  webhooksCleanup:
+    enable: true
+  livenessProbe:
+    failureThreshold: 10
+    httpGet:
+      path: /health/liveness
+      port: 9443
+      scheme: HTTPS
+    initialDelaySeconds: 45
+    periodSeconds: 30
+    successThreshold: 1
+    timeoutSeconds: 30
+  readinessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /health/readiness
+      port: 9443
+      scheme: HTTPS
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 30
+  extraArgs:
+    - webhookTimeout=30
