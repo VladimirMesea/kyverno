@@ -57,4 +57,4 @@ kyverno:
     successThreshold: 1
     timeoutSeconds: 30
   extraArgs:
-    - webhookTimeout=50
+    - webhookTimeout=30
