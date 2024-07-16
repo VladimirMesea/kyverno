@@ -8,4 +8,5 @@ dependencies:
     version: 3.2.6
     repository: "https://kyverno.github.io/kyverno/"
   - name: kubernetes-policies
+    version: 3.2.5
     repository: "https://kyverno.github.io/kyverno"
