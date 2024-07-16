@@ -22,7 +22,7 @@ kyverno:
     container:
       resources:
         limits: 
-          memory: 768Mi
+          memory: 1Gi
   backgroundController:
     replicas: 1
   cleanupController:
