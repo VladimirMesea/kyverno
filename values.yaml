@@ -15,13 +15,13 @@ kyverno:
       create: false
   resources:
     limits:
-      memory: 1Gi
+      memory: 2Gi
   admissionController:
     replicas: 1
     container:
       resources:
         limits: 
-          memory: 1Gi
+          memory: 2Gi
   backgroundController:
     replicas: 1
   cleanupController:
@@ -30,7 +30,7 @@ kyverno:
     replicas: 1
     resources:
       limits:
-        memory: 1Gi
+        memory: 2Gi
   podDisruptionBudget:
     minAvailable: 1
   webhooksCleanup:
