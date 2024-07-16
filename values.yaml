@@ -9,7 +9,6 @@ namespace-config:
 
 kyverno:
   namespace: kyverno
-  priorityClassName: "system-cluster-critical"
   rbac:
     create: true
     serviceAccount:
@@ -32,7 +31,6 @@ kyverno:
     resources:
       limits:
         memory: 1Gi
-  config.webhooks: '[{"namespaceSelector":{"matchExpressions":[{"key":"kubernetes.io/metadata.name","operator":"NotIn","values":["kyverno-system"]}]}}]'
   podDisruptionBudget:
     minAvailable: 1
   webhooksCleanup:
