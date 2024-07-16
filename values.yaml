@@ -31,7 +31,7 @@ kyverno:
     replicas: 1
     resources:
       limits:
-        memory: 256Mi
+        memory: 1Gi
   podDisruptionBudget:
     minAvailable: 1
   webhooksCleanup:
@@ -57,4 +57,4 @@ kyverno:
     successThreshold: 1
     timeoutSeconds: 30
   extraArgs:
-    - webhookTimeout=30
+    - webhookTimeout=50
