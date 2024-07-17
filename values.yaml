@@ -60,7 +60,7 @@ kyverno:
   extraArgs:
     - webhookTimeout=30
 
-kubernetes-policies:
+kyverno-policies:
   enable:
     validate_pod_probes: false
     validate_service_external_ips: true
