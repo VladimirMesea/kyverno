@@ -60,9 +60,9 @@ kyverno:
   extraArgs:
     - webhookTimeout=30
 
-#kyverno-policies:
-#  enable:
-#    validate_pod_probes: false
+kyverno-policies:
+  enable:
+    require-pod-probes: true
 #    validate_service_external_ips: true
 #    validate_storage_permission: true
 #    validate_external_secrets: true
