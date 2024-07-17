@@ -1,15 +1,5 @@
-namespace-config:
-  application:
-    serviceAccount:
-      create: false
-    namespace:
-      name: kyverno-system
-      pss:
-        level: restricted
-
 kyverno:
   namespace: kyverno-system
-  priorityClassName: "system-cluster-critical"
   rbac:
     create: true
     serviceAccount:
@@ -32,7 +22,6 @@ kyverno:
     resources:
       limits:
         memory: 2Gi
-  config.webhooks: '[{"namespaceSelector":{"matchExpressions":[{"key":"kubernetes.io/metadata.name","operator":"NotIn","values":["kyverno-system"]}]}}]'
   podDisruptionBudget:
     minAvailable: 1
   webhooksCleanup:
@@ -59,12 +48,3 @@ kyverno:
     timeoutSeconds: 30
   extraArgs:
     - webhookTimeout=30
-
-kyverno-policies:
-  enable:
-    require-pod-probes: true
-#    validate_service_external_ips: true
-#    validate_storage_permission: true
-#    validate_external_secrets: true
-#    mutate_security: true
-#    validate_storageclass_deletion: true
