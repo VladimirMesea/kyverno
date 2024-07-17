@@ -60,11 +60,11 @@ kyverno:
   extraArgs:
     - webhookTimeout=30
 
-kyverno-policies:
-  enable:
-    validate_pod_probes: false
-    validate_service_external_ips: true
-    validate_storage_permission: true
-    validate_external_secrets: true
-    mutate_security: true
-    validate_storageclass_deletion: true
+#kyverno-policies:
+#  enable:
+#    validate_pod_probes: false
+#    validate_service_external_ips: true
+#    validate_storage_permission: true
+#    validate_external_secrets: true
+#    mutate_security: true
+#    validate_storageclass_deletion: true
