@@ -7,6 +7,6 @@ dependencies:
   - name: kyverno
     version: 3.2.6
     repository: "https://kyverno.github.io/kyverno/"
-  - name: kyverno-policies
+  - name: kyverno_policies
     version: 3.2.5
     repository: "https://github.com/VladimirMesea/kyverno_policies"
