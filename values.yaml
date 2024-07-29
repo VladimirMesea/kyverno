@@ -55,6 +55,7 @@ kyverno-policies:
     create: true
     serviceAccount:
       create: false
+  installDefaultPolicies: false  # Hypothetical flag to disable default policies
   policies:
     enabled: true
     policySet:
