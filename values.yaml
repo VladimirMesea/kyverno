@@ -48,11 +48,3 @@ kyverno:
     timeoutSeconds: 30
   extraArgs:
     - webhookTimeout=30
-    
-kyverno-policies:
-  namespace: kyverno-system
-  policies:
-    enable:
-      mutate:
-        # enable.mutate.podSecurityStandards -- Enable Security Mutation policies
-        podSecurityStandards: true    
